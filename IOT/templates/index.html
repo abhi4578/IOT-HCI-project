@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load static %}
+<!-- <script src="{% static 'aframe.min.js' %}"></script> -->
+<head>
+<script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- include aframe-ar.js -->
+<!-- <script src="{% static 'aframe-ar.js' %}"></script> -->
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'stylesheet.css' %}">
+<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
+<script type="text/javascript" src="{% static 'events.js' %}"></script>
+<script type="text/javascript" src="{% static 'mqtt1.js' %}"></script>
+
+</head>
+<body onload="init();" style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
+
+</div>
+  <!-- <a-scene embedded arjs='sourceType: image; sourceUrl:../../data/images/armchair.jpg;'> -->
+
+
+  <a-scene embedded arjs='sourceType: webcam;' id="myCanvas1">
+  
+    <!-- <a-plane position="0 0 0" rotation="-90 0 0" width="1" height="1" color="#7BC8A4"></a-plane> -->
+
+         <a-image id="o3" class="image" position="1.4 0 1.4" rotation="-90 0 0" width="1" height="1" src="https://images-eu.ssl-images-amazon.com/images/I/51NLcLowejL.jpg"></a-image>
+     
+        <a-image  id="o1" class="image" position="1.4 0 -1.4" rotation="-90 0 0" width="1" height="1" src="https://images-na.ssl-images-amazon.com/images/I/511DVV%2B4WIL._SX324_BO1,204,203,200_.jpg"></a-image>
+
+          <a-image  id="o0" class="image" position="-1.4 0 -1.4" rotation="-90 0 0" width="1" height="1" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmS0UJWLqP5jOwLfbNzQ3WpvCNosStuQrzBDCx6Y0mpcdydZhH"></a-image>
+
+          <a-image  id="o2" class="image" position="-1.4 0 1.4" rotation="-90 0 0" width="1" height="1" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdByNiG1Kqzu0LrmzDj70Wgymo30GbBJ6wAT84DH_E88GJ7fCD"></a-image>
+
+    <a-marker markerhandler emitevents="true" type='pattern' url="{% static 'pattern-marker1.patt' %} ">
+        <a-marker-camera markerhandler emitevents="true" cursor="fuse: false;rayOrigin: mouse" id="marker1" type='pattern' url="{% static 'pattern-marker1.patt' %} ">
+
+        </a-marker-camera>
+
+    </a-marker>
+
+ 
+</a-scene>
+<a id="inline" href="#data">This shows content of element who has id="data"</a>
+
+<div style="display:none"><div id="data">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div></div>
+
+<input type="hidden" id="o0_Name" name="variable" value="{{ obj.0.name }}">
+<input type="hidden" id="o0_Id" name="variable" value="{{ obj.0.id }}">
+<input type="hidden" id="o0_Desc" name="variable" value="{{ obj.0.description }}">
+<input type="hidden" id="o0_img" name="variable" value="{{ obj.0.image}}">
+
+
+<input type="hidden" id="o1_Name" name="variable" value="{{ obj.1.name }}">
+<input type="hidden" id="o1_Id" name="variable" value="{{ obj.1.id }}">
+<input type="hidden" id="o1_Desc" name="variable" value="{{ obj.1.description }}">
+<input type="hidden" id="o1_img" name="variable" value="{{ obj.1.image}}">
+
+<input type="hidden" id="o2_Name" name="variable" value="{{ obj.2.name }}">
+<input type="hidden" id="o2_Id" name="variable" value="{{ obj.2.id }}">
+<input type="hidden" id="o2_Desc" name="variable" value="{{ obj.2.description }}">
+<input type="hidden" id="o2_img" name="variable" value="{{ obj.2.image}}">
+
+<input type="hidden" id="o3_Name" name="variable" value="{{ obj.3.name }}">
+<input type="hidden" id="o3_Id" name="variable" value="{{ obj.3.id }}">
+<input type="hidden" id="o3_Desc" name="variable" value="{{ obj.3.description }}">
+<input type="hidden" id="o3_img" name="variable" value="{{ obj.3.image}}">
+
+</body>
+</html>
